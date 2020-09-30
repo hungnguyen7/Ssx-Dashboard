@@ -42,7 +42,9 @@ const RowDetail=(row)=>{
     const onSubmit=(data, e)=>{
         console.log(data)
         console.log(companyId)
-         patchDataToServer(`http://45.119.213.117:5000/api/v1/company/${companyId}`, data)
+         patchDataToServer(`http://45.119.213.117:5000/api/v1/company/${companyId}`, {
+             "volume": parseInt(data.volume)
+         })
          e.target.reset()
      }
 

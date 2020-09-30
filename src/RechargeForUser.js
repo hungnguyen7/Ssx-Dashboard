@@ -5,7 +5,9 @@ import {patchDataToServer} from './Utils/Common';
     const {register, handleSubmit, reset, errors}=useForm();
     const onSubmit=(data, e)=>{
         console.log(data)
-        patchDataToServer(`http://45.119.213.117:5000/api/v1/account/asset/username/${data.username}`, data)
+        patchDataToServer(`http://45.119.213.117:5000/api/v1/account/asset/username/${data.username}`, {
+            "asset": parseInt(data.asset)
+        })
         e.target.reset()
     }
     return(
