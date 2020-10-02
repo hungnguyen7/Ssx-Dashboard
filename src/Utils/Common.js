@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import {omit} from 'lodash';
 
 export const getUser=()=>{
     const userStr=sessionStorage.getItem('user');

@@ -18,7 +18,7 @@ class App extends React.Component{
               <NavLink exact activeClassName='active' to='/'>Đăng nhập</NavLink>
               <NavLink activeClassName='active' to='listcompany'>Danh sách công ty</NavLink>
               {/* <NavLink activeClassName='active' to='inputcompany'>Nhập công ty</NavLink> */}
-              {/* <NavLink activeClassName='active' to='listuser'>Danh sách user</NavLink> */}
+              <NavLink activeClassName='active' to='listuser'>Danh sách user</NavLink>
               <NavLink activeClassName='active' to='rechargeforuser'>Nạp tiền cho user</NavLink>
               <NavLink activeClassName='active' to='deleteuser'>Vô hiệu hóa user</NavLink>
             </div>
@@ -28,7 +28,7 @@ class App extends React.Component{
                 <PublicRoute exact path='/' component={Login}/>
                 <PrivateRoute path='/listcompany' component={ListCompany}/>
                 {/* <PrivateRoute path='/inputcompany' component={InputCompany}/> */}
-                {/* <PrivateRoute path='/listuser' component={ListUser}/> */}
+                <PrivateRoute path='/listuser' component={ListUser}/>
                 <PrivateRoute path='/rechargeforuser' component={RechargeForUser}/>
                 <PrivateRoute path='/deleteuser' component={DeleteUser}/>
 

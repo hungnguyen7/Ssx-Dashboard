@@ -13,11 +13,11 @@ const ListCompany=()=>{
         }
         fetchData();
     }, []);
-    console.log(data)
-    // let titleArr = ['ID', 'name', 'stockCode', 'stockExchange', 'volume', 'currentListedVolume', 'numberOfShortSale', 'price', 'marketCap', 'marketCapRate', 'baseListedVolume','baseListedPrice']
+    // console.log(data)
+    let titleArr = ['Name', 'Stock code', 'Stock Exchange','Volume', 'Number of short sale', 'Price', 'Market cap', 'Market cap rate', 'Base listed volume', 'Base listed price', 'Base market cap', 'Career','Edit']
     return(
         <table border='1'>
-            {/* {renderTheadTable(titleArr)} */}
+            {renderTheadTable(titleArr)}
             <tbody>
                 {data.map((value, index)=>{
                     return(
@@ -39,13 +39,14 @@ const RowDetail=(row)=>{
     // console.log(key)
     // console.log(data.length)
     // console.log(companyId)
-    const onSubmit=(data, e)=>{
+    const onSubmit=async (data, e)=>{
         console.log(data)
         console.log(companyId)
-         patchDataToServer(`http://45.119.213.117:5000/api/v1/company/${companyId}`, {
+         await patchDataToServer(`http://45.119.213.117:5000/api/v1/company/${companyId}`, {
              "volume": parseInt(data.volume)
          })
          e.target.reset()
+         window.location.reload()
      }
 
     return(
@@ -54,7 +55,7 @@ const RowDetail=(row)=>{
                 return <td key={index}>{value}</td>
             })}
             <td>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className='submittable' onSubmit={handleSubmit(onSubmit)}>
                     <input type='number' name='volume' ref={register({ required: true })}/>
                     <input type='submit' value={'Submit'}></input>
                 </form>

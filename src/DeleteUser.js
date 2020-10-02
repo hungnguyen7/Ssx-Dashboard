@@ -11,12 +11,12 @@ import {getIdUser} from './Utils/Common';
             <table>
                 <tbody>
                     <tr>
-                        <th>Username</th>
-                        <td><input name='username' ref={register({ required: true })}/></td>
+                        <th>Loading...</th>
+                        {/* <td><input name='username' ref={register({ required: true })}/></td> */}
                     </tr>
                 </tbody>
             </table>
-            <input type='submit' value='Thêm tiền thêm vui'></input>
+            {/* <input type='submit' value='Thêm tiền thêm vui'></input> */}
         </form>
     )
  }

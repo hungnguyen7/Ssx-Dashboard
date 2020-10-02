@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import {getUser, removeUserSession, postDataToServer, getStockCode} from './Utils/Common';
+import {getUser, removeUserSession, postDataToServer} from './Utils/Common';
 import {useForm} from 'react-hook-form';
 let InputCompany=(props)=>{
     const user=getUser();

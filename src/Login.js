@@ -25,21 +25,21 @@ let Login=(props)=>{
             props.history.push('/listcompany');
         }).catch(error=>{
             setLoading(false);
-            if (error.response.data.code === 404) setError(error.response.data.message);
-            else setError("Something went wrong. Please try again later.");
+            console.log(error)
+            // if (error.response.data.code === 404) setError(error.response.data.message);
+            setError("Something went wrong. Please try again later.");
         })
         // Chuyen vao trang dashboard khi nguoi dung dang nhap thanh cong
     }
     // console.log({...username})
     return(
-        <div>
-            Login<br/>
+        <div className='form'>
             Username<br/>
-            <input type='text' {...username} autoComplete='new-password'/><br/>
+            <input type='text' {...username} autoComplete='new-password' required/><br/>
             Password<br/>
-            <input type='password' {...password} autoComplete='new-password'/>
+            <input type='password' {...password} autoComplete='new-password' required/>
             {error && <><small style={{ color: 'red' }}>{error}</small><br/></>}<br/>
-            <input type='button' value={loading?'Loading...':'Login'} onClick={handleLogin} disabled={loading}/>
+            <button value={loading?'Loading...':'Login'} onClick={handleLogin} disabled={loading}>Login</button>
         </div>
     )
 }
