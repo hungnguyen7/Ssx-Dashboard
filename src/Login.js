@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {setUserSession} from './Utils/Common';
 import axios from 'axios';
 let Login=(props)=>{
+    //  console.log(props)
     // const [state, setState] = useState(initialStateValue)
     // state: định nghĩa tên của state
     // setState: định nghĩa tên function dùng cho việc update state
@@ -37,7 +38,7 @@ let Login=(props)=>{
             Username<br/>
             <input type='text' {...username} autoComplete='new-password' required/><br/>
             Password<br/>
-            <input type='password' {...password} autoComplete='new-password' required/>
+            <input type='password' {...password} autoComplete='new-password' required/><br/>
             {error && <><small style={{ color: 'red' }}>{error}</small><br/></>}<br/>
             <button value={loading?'Loading...':'Login'} onClick={handleLogin} disabled={loading}>Login</button>
         </div>

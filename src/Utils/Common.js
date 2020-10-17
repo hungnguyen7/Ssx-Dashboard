@@ -19,7 +19,8 @@ export const removeUserSession=()=>{
 export const setUserSession=(token, user)=>{
     // console.log(token, user)
     sessionStorage.setItem('token', token);
-    sessionStorage.setItem('user', JSON.stringify(user))
+    // Tu dong Logout sau 6 tieng
+    setTimeout(()=>removeUserSession(), 1000*60*60*6)
 }
 
 export const postDataToServer=async (link ,data)=>{
@@ -30,7 +31,7 @@ export const postDataToServer=async (link ,data)=>{
     }).then(res=>{
         alert("Success")
     }).catch(error=>{
-        alert('Something wrong, try again')
+        alert(error.response.data.message)
     })
 }
 export const patchDataToServer=async (link ,data)=>{
@@ -54,6 +55,17 @@ export const getDataFromServer=async(link)=>{
         data=res;
     })
     return data;
+}
+export const deleteDataFromServer=async (link)=>{
+    await axios.delete(link,{
+        headers:{
+            'Authorization': `Bearer ${getToken()}`
+        }
+    }).then(res=>{
+        alert("Success")
+    }).catch(error=>{
+        alert('Something wrong, try again')
+    })
 }
 export const renderTheadTable=(arr)=>{
     return(
@@ -101,7 +113,7 @@ export const getIdUser= (user)=>{
 export const getStockCode=async()=>{
     let result=await getDataFromServer('http://45.119.213.117:5000/api/v1/company/all')
     let data = result.data.data.map((value, index)=>{
-        return [value.stockCode, value._id]
+        return value.stockCode
     })
     return data
 }

@@ -14,10 +14,10 @@ const ListCompany=()=>{
         fetchData();
     }, []);
     // console.log(data)
-    let titleArr = ['Name', 'Stock code', 'Stock Exchange','Volume', 'Number of short sale', 'Price', 'Market cap', 'Market cap rate', 'Base listed volume', 'Base listed price', 'Base market cap', 'Career','Edit']
+    let title = ['Mã CP', 'Stock Exchange','Khối lượng', 'Number of short sale', 'Giá', 'Market cap', 'Market cap rate', 'Base listed volume', 'Base listed price', 'Base market cap','Edit', 'ABC']
     return(
-        <table border='1'>
-            {renderTheadTable(titleArr)}
+        <table className='responsive-table' border='1'>
+            {renderTheadTable(title)}
             <tbody>
                 {data.map((value, index)=>{
                     return(
@@ -30,10 +30,12 @@ const ListCompany=()=>{
 }
 
 const RowDetail=(row)=>{
-    const {register, handleSubmit, reset, errors}=useForm();
+    const {register, handleSubmit}=useForm();
     // console.log(row)
+    // Lay companyId de gui du lieu
     let companyId=row._id;
-    let rawData = omit(row, ['_id', 'updatedAt'])
+    // Loai bo mot so properties khong can thiet
+    let rawData = omit(row, ['_id', 'updatedAt', 'createdAt', 'name', 'career'])
     // const key = Object.keys(row);
     const data = Object.keys(rawData).map(key => rawData[key]);
     // console.log(key)

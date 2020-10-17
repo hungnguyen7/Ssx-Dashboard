@@ -11,8 +11,9 @@ let InputCompany=(props)=>{
     //handle form
     const {register, handleSubmit, reset, errors}=useForm();
     const [loading, setLoading]=useState(false);
-    const [companyName, setCompanyName]= useState([])
+    // const [companyName, setCompanyName]= useState([])
     const onSubmit=(data, e)=>{
+        // Tien xu li du lieu truoc khi post
         data.price=parseInt(data.price)
         data.volume=parseInt(data.volume)
         data.marketCapRate=parseInt(data.marketCapRate)
@@ -25,7 +26,7 @@ let InputCompany=(props)=>{
         postDataToServer('http://45.119.213.117:5000/api/v1/company/create', data)
         e.target.reset()
     }
-    console.log(companyName)
+    // console.log(companyName)
     return(
         <div>
             Welcome <strong>{user}</strong> <br/>

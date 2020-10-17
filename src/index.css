@@ -47,15 +47,15 @@ code {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
+  padding: 12px;
+  width: 175px;
+  /* height: 0px; */
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }
 .form button {
   font-family: "Roboto", sans-serif;
@@ -75,7 +75,7 @@ code {
   background: #43A047;
 }
 
-table[border="1"] {
+/* table[border="1"] {
   border-collapse:collapse;
   font:normal normal 11px Verdana,Arial,Sans-Serif;
   color:#333;
@@ -96,6 +96,201 @@ table[border="1"] th {
   background-color:#333;
   color:#fff;
   font-weight:bold;
+} */
+
+.responsive-table {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-spacing: 0;
+}
+
+@media (min-width: 48em) {
+  .responsive-table {
+    font-size: .5em;
+  }
+}
+
+@media (min-width: 62em) {
+  .responsive-table {
+    font-size: .8em;
+  }
+}
+
+.responsive-table thead {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+@media (min-width: 48em) {
+  .responsive-table thead {
+    position: relative;
+    clip: auto;
+    height: auto;
+    width: auto;
+    overflow: auto;
+  }
+}
+
+.responsive-table thead th {
+  background-color: #1d96b2;
+  border: 1px solid #1d96b2;
+  font-weight: normal;
+  text-align: center;
+  color: white;
+}
+.responsive-table tbody,
+.responsive-table tr,
+.responsive-table th,
+.responsive-table td {
+  display: block;
+  text-align: left;
+  white-space: normal;
+}
+
+@media (min-width: 48em) {
+  .responsive-table tr {
+    display: table-row;
+  }
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: .5em;
+  vertical-align: middle;
+}
+
+@media (min-width: 30em) {
+  .responsive-table th,
+  .responsive-table td {
+    padding: .75em .5em;
+  }
+}
+
+@media (min-width: 48em) {
+  .responsive-table th,
+  .responsive-table td {
+    display: table-cell;
+    padding: .5em;
+  }
+}
+
+@media (min-width: 62em) {
+  .responsive-table th,
+  .responsive-table td {
+    padding: .85em .5em;
+  }
+}
+
+@media (min-width: 75em) {
+  .responsive-table th,
+  .responsive-table td {
+    padding: .75em;
+  }
+}
+
+@media (min-width: 48em) {
+  .responsive-table caption {
+    font-size: 1.5em;
+  }
+}
+
+
+@media (min-width: 62em) {
+  .responsive-table tfoot {
+    font-size: .9em;
+  }
+}
+
+@media (min-width: 48em) {
+  .responsive-table tbody {
+    display: table-row-group;
+  }
+}
+
+.responsive-table tbody tr {
+  margin-bottom: 1em;
+}
+
+@media (min-width: 48em) {
+  .responsive-table tbody tr {
+    display: table-row;
+    border-width: 1px;
+  }
+}
+
+/* .responsive-table tbody tr:last-of-type {
+  margin-bottom: 0;
+} */
+
+@media (min-width: 48em) {
+  .responsive-table tbody tr:nth-of-type(even) {
+    background-color: rgba(94, 93, 82, 0.1);
+  }
+}
+
+.responsive-table tbody th[scope="row"] {
+  background-color: #1d96b2;
+  color: white;
+}
+
+@media (min-width: 30em) {
+  .responsive-table tbody th[scope="row"] {
+    border-left: 1px solid #1d96b2;
+    border-bottom: 1px solid #1d96b2;
+  }
+}
+
+@media (min-width: 48em) {
+  .responsive-table tbody th[scope="row"] {
+    background-color: transparent;
+    color: #5e5d52;
+    text-align: left;
+  }
+}
+
+.responsive-table tbody td {
+  text-align: left;
+}
+
+@media (min-width: 48em) {
+  .responsive-table tbody td {
+    border-left: 1px solid #1d96b2;
+    border-bottom: 1px solid #1d96b2;
+    text-align: center;
+  }
+}
+
+@media (min-width: 48em) {
+  .responsive-table tbody td:last-of-type {
+    border-right: 1px solid #1d96b2;
+  }
+}
+
+.responsive-table tbody td[data-type=currency] {
+  text-align: right;
+}
+
+.responsive-table tbody td[data-title]:before {
+  content: attr(data-title);
+  float: left;
+  font-size: .8em;
+  color: rgba(94, 93, 82, 0.75);
+}
+
+@media (min-width: 30em) {
+  .responsive-table tbody td[data-title]:before {
+    font-size: .9em;
+  }
+}
+
+@media (min-width: 48em) {
+  .responsive-table tbody td[data-title]:before {
+    content: none;
+  }
 }
 .submittable{
   /* border: 1px solid red; */
@@ -106,3 +301,157 @@ table[border="1"] th {
 .submittable input {
   
 }
+
+select {
+  padding: 12px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.container {
+  display: block;
+  /* Xác định kiểu hiển thị có dạng là block */
+  position: relative;
+  /* Xác định vị trí của phần tử là tuyệt đối */
+  width: 55px;
+  height: 30px;
+  margin: 20px auto;
+}
+.container > input[type = checkbox] { display: none; }
+.background {
+  border: 1px solid red;
+  display: block;
+  position: absolute;
+  /* Xác định vị trí của phần tử là tuyệt đối so với phần tử bao ngoài */
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 30px;
+  /* Xác định độ bo cong góc của phần tử */
+  transition: 0.25s;
+  /* Xác khoảng thời gian để phần tử biến đổi trạng thái */
+  border: 2px solid #eeeeee;
+  /* Xác định đồ dầy viền là 2px, có kiểu nét liền và có màu #eeeeee*/
+}
+
+.mask {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  box-shadow: 1px 1px 3px silver;
+  border-radius: 50%;
+  /* Bo cong các góc để phần từ chuyển từ hình vuông sang hình tròn */
+  left: 2px;
+  /* Cách lề trái của phần tử container 2px */
+  top: 2px;
+  /* Cách lề trên của phần tử container 2px */
+  transition: 0.25s;
+  cursor: pointer;
+  /* Xác định kiểu hiển thị của con trỏ chuột khi rê con trỏ chuột vào phần tử là pointer */
+}
+
+.container>input[ type=checkbox]:checked+.background {
+  background-color: #4cd964;
+  border-color: #4cd964;
+}
+
+.container>input[ type=checkbox]:checked~.mask {
+  left: 27px;
+}
+
+.box-item1, .box-item2, .box-item3 {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.box-item1:hover, .box-item2:hover, .box-item3:hover {
+  background-color: #45a049;
+}
+
+.box{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.box-item1{
+  grid-column-start:1;
+  grid-column-end: 2;
+}
+.box-item2{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.box-item3{
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.command{
+  margin: 0 auto;
+  width: 50%;
+  padding: 10px;
+  border-radius: 25px;
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template-rows: 30% 70%;
+  margin-bottom: 10px;
+}
+.headerCommand{
+  margin-left: 5%;
+  grid-row-start:1;
+  grid-row-end: 2;
+  display: grid;
+  grid-template-columns: 30% 30% 30% 10%;
+}
+.body{
+  margin-left: 5%;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 50% 50%;
+}
+
+.asText {
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  color: white;
+  }
+  .asText:hover{
+    cursor: pointer;
+    color: rgb(3, 66, 184);
+  }
+  .pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
