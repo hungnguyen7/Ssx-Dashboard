@@ -6,7 +6,7 @@ const ConfirmSession=()=>{
     const {register, handleSubmit}=useForm();
     const onSubmit=(data, e)=>{
         // Loai bo cac dau , phan cach phan nghin: 1,000
-        postDataToServer('http://45.119.213.117:5000//api/v1/derivative/confirm-all',data)
+        postDataToServer('//45.119.213.117:5000//api/v1/derivative/confirm-all',data)
         e.target.reset()
     }
     return(

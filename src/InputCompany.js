@@ -23,7 +23,7 @@ let InputCompany=(props)=>{
         data.baseMarketCap=parseInt(data.baseMarketCap)
         data.numberOfShortSale=parseInt(data.numberOfShortSale)
         data.marketCap=parseInt(data.marketCap)
-        postDataToServer('http://45.119.213.117:5000/api/v1/company/create', data)
+        postDataToServer('//45.119.213.117:5000/api/v1/company/create', data)
         e.target.reset()
     }
     // console.log(companyName)

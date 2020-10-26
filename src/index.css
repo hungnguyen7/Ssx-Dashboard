@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8,10 +8,9 @@ body {
 }
  
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", "monospace";
 }
- 
+/* CSS cho các danh mục */
 .content {
   padding: 20px;
 }
@@ -36,6 +35,9 @@ code {
 .header .active {
   color: #2c7613;
 }
+/* ---------------------- */
+
+/* CSS cho detailUser */
 .form{
   position: relative;
   z-index: 1;
@@ -49,7 +51,6 @@ code {
 .form input {
   padding: 12px;
   width: 175px;
-  /* height: 0px; */
   border: none;
   font-size: 20px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -74,30 +75,9 @@ code {
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
 }
+/* ------------------------------- */
 
-/* table[border="1"] {
-  border-collapse:collapse;
-  font:normal normal 11px Verdana,Arial,Sans-Serif;
-  color:#333;
-}
-
-table[border="1"] tr {
-  background-color:#fff;
-}
-
-table[border="1"] th,
-table[border="1"] td {
-  vertical-align:top;
-  padding:5px 10px;
-  border:1px solid #333;
-}
-
-table[border="1"] th {
-  background-color:#333;
-  color:#fff;
-  font-weight:bold;
-} */
-
+/* CSS cho table */
 .responsive-table {
   width: 100%;
   margin-bottom: 1.5em;
@@ -222,9 +202,9 @@ table[border="1"] th {
   }
 }
 
-/* .responsive-table tbody tr:last-of-type {
+.responsive-table tbody tr:last-of-type {
   margin-bottom: 0;
-} */
+}
 
 @media (min-width: 48em) {
   .responsive-table tbody tr:nth-of-type(even) {
@@ -292,14 +272,12 @@ table[border="1"] th {
     content: none;
   }
 }
+/* ------------------------ */
+/* CSS cho nút submit ListCompany */
 .submittable{
-  /* border: 1px solid red; */
   margin-bottom: auto;
   display: grid;
   grid-template-columns: 70% 30%;
-}
-.submittable input {
-  
 }
 
 select {
@@ -313,7 +291,7 @@ select {
   appearance: button;
   outline: none;
 }
-
+/* Button iphone */
 .container {
   display: block;
   /* Xác định kiểu hiển thị có dạng là block */
@@ -366,22 +344,10 @@ select {
 .container>input[ type=checkbox]:checked~.mask {
   left: 27px;
 }
+/* ------------------------------ */
 
-.box-item1, .box-item2, .box-item3 {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 5px;
-  margin-left: 5px;
-}
 
-.box-item1:hover, .box-item2:hover, .box-item3:hover {
-  background-color: #45a049;
-}
-
+/* CSS cho danh sách user */
 .box{
   width: 100%;
   display: grid;
@@ -401,57 +367,25 @@ select {
   grid-column-end: 4;
 }
 
-.command{
-  margin: 0 auto;
-  width: 50%;
-  padding: 10px;
-  border-radius: 25px;
-  /* border: 1px solid black; */
-  display: grid;
-  grid-template-rows: 30% 70%;
-  margin-bottom: 10px;
-}
-.headerCommand{
-  margin-left: 5%;
-  grid-row-start:1;
-  grid-row-end: 2;
-  display: grid;
-  grid-template-columns: 30% 30% 30% 10%;
-}
-.body{
-  margin-left: 5%;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 50% 50%;
-}
-
-.asText {
-  background:none;
-  border:none;
-  margin:0;
-  padding:0;
+.box-item1, .box-item2, .box-item3 {
+  background-color: #4CAF50;
   color: white;
-  }
-  .asText:hover{
-    cursor: pointer;
-    color: rgb(3, 66, 184);
-  }
-  .pagination {
-    display: inline-block;
-  }
-  
-  .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
-  
-  .pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+.box-item1:hover, .box-item2:hover, .box-item3:hover {
+  background-color: #45a049;
+}
+/* --------------------------------- */
+
+.tdOfEditColumnInListUser{
+  width: 30em;
+}
+/* CSS cho button chuyển trang */
+.buttonToRedirectPage{
+  padding-left: 80%;
+}

@@ -19,8 +19,8 @@ export const removeUserSession=()=>{
 export const setUserSession=(token, user)=>{
     // console.log(token, user)
     sessionStorage.setItem('token', token);
-    // Tu dong Logout sau 6 tieng
-    setTimeout(()=>removeUserSession(), 1000*60*60*6)
+    // tự động logout sau 3 tiếng
+    setTimeout(()=>removeUserSession(), 1000*60*60*3)
 }
 
 export const postDataToServer=async (link ,data)=>{
@@ -45,7 +45,7 @@ export const patchDataToServer=async (link ,data)=>{
         alert('Something wrong, try again')
     })
 }
-export const getDataFromServer=async(link)=>{
+export const getDataFromServer=async (link)=>{
     let data;
     await axios.get(link,{
         headers:{
@@ -79,31 +79,8 @@ export const renderTheadTable=(arr)=>{
     )
 }
 
-// export const RowDetail=(row)=>{
-//     // console.log(row)
-//     let companyId=row._id;
-//     let rawData = omit(row, ['_id', 'updatedAt'])
-//     // const key = Object.keys(row);
-//     const data = Object.keys(rawData).map(key => rawData[key]);
-//     // console.log(key)
-//     // console.log(data.length)
-//     console.log(companyId)
-//     return(
-//         <tr>
-//             {data.map((value, index)=>{
-//                 return <td key={index}>{value}</td>
-//             })}
-//             <td>
-//                 <form>
-//                     <input type='text' name='stockExchange' ref={register({ required: true })}/>
-//                 </form>
-//             </td>
-//         </tr>
-//     )
-// }
-
-export const getIdUser= (user)=>{
-    axios.get('http://45.119.213.117:5000/api/v1/account/all', {
+export const getIdUser=(user)=>{
+    axios.get('//45.119.213.117:5000/api/v1/account/all', {
         headers:{
             'Authorization': `Bearer ${getToken()}`,
           }
@@ -111,7 +88,7 @@ export const getIdUser= (user)=>{
 }
 
 export const getStockCode=async()=>{
-    let result=await getDataFromServer('http://45.119.213.117:5000/api/v1/company/all')
+    let result=await getDataFromServer('//45.119.213.117:5000/api/v1/company/all')
     let data = result.data.data.map((value, index)=>{
         return value.stockCode
     })

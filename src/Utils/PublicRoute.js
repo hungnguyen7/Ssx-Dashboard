@@ -5,7 +5,7 @@ import {getToken} from './Common';
 let PublicRoute=({component: Component, ...rest})=>{
     return(
         <Route {...rest} render={(props)=>{
-            //sau khi dang nhap chuyen huong den listcompany
+            //Sau khi đăng nhập chuyển hướng đến ListCompany
             return !getToken()?<Component {...props}/>:<Redirect to={{pathname:'listcompany'}}/>
         }}/>
     )

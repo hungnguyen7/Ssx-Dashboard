@@ -16,7 +16,7 @@ let Login=(props)=>{
     const handleLogin=()=>{
         setError(null);
         setLoading(true);
-        axios.post('http://45.119.213.117:5000/api/v1/users/login',{
+        axios.post('//45.119.213.117:5000/api/v1/users/login',{
             username: username.value,
             password: password.value
         }).then(res=>{

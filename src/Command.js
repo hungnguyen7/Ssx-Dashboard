@@ -1,27 +1,27 @@
 import React, {useState, useEffect} from 'react';
 import {getDataFromServer, deleteDataFromServer, renderTheadTable} from './Utils/Common';
-import {filter, omit} from 'lodash';
+import {omit} from 'lodash';
 
 export const ActiveCommand=(props)=>{
     const [data, setData]=useState([])
     const [totalPage, setTotalPage]=useState(0)
     useEffect(()=>{
         const fetchData=async ()=>{
-            const result=await getDataFromServer('http://45.119.213.117:5000/api/v1/command/admin/active?pageSize=10&pageNumber=1&role=admin')
+            const result=await getDataFromServer('//45.119.213.117:5000/api/v1/command/admin/active?pageSize=10&pageNumber=1&role=admin')
             setTotalPage(result.data.totalPages)
             setData(result.data.data)
         }
         fetchData();
     }, []);
+    //Xử lí chuyển trang
     const handleClick=async(i)=>{
-        const result=await getDataFromServer(`http://45.119.213.117:5000/api/v1/command/admin/active?pageSize=10&pageNumber=${i}&role=admin`)
-        console.log(result)
+        const result=await getDataFromServer(`//45.119.213.117:5000/api/v1/command/admin/active?pageSize=10&pageNumber=${i}&role=admin`)
         setData(result.data.data)
     }
-    //Tao nut chuyen trang dua tren totalPage duoc tra ve tu API
+    //Tạo các button dựa trên totalPage mà API trả về
     let pageButton=[];
     for(let i=1; i<totalPage+1; i++){
-        pageButton.push(<a onClick={()=>handleClick(i)} key={i}>{i}</a>)
+        pageButton.push(<button onClick={()=>handleClick(i)} key={i}>{i}</button>)
     }
     let title = ['Mã CP', 'Giá', 'Khối lượng', 'Loại lệnh', 'Mua/Bán', 'Username', 'Thời gian đặt', 'Hủy lệnh']
     return(
@@ -36,27 +36,32 @@ export const ActiveCommand=(props)=>{
                     })}
                  </tbody>
            </table>
-             {pageButton}
+           <div className='buttonToRedirectPage'>
+                {pageButton}
+            </div>
          </div>
     )
 }
 
-//Render chi tiet lenh
 let CommandDetail=(props)=>{
-    console.log(props);
     let idCommand = props._id;
+    // Covert dữ liệu thời gian
     let time = `${new Date(props.updatedAt).getHours()}:${new Date(props.updatedAt).getMinutes()}`
-    let filterData = omit(props, [,'_id', 'beginPrice', 'beginVolume', 'changes', 'createdAt', 'interestRate', 'isShortSale', 'matches', 'updatedAt', 'state', 'commandType'])
+    // Loại bỏ properties không cần render
+    let filterData = omit(props, ['_id', 'beginPrice', 'beginVolume', 'changes', 'createdAt', 'interestRate', 'isShortSale', 'matches', 'updatedAt', 'state', 'commandType'])
     filterData.time = time;
+    // Mua hoặc bán
     filterData.buyOrSell = props.commandType===0||props.commandType===2?'Mua':'Bán'
+    // Loại lệnh
     filterData.cmdType = props.commandType===0||props.commandType===1?'LO':'MP'
-    console.log(filterData)
 
-    const onDelete=(idCommand)=>{
-        console.log(idCommand)
-        deleteDataFromServer(`http://45.119.213.117:5000/api/v1/command/${idCommand}`)
+    // Xử lí cancel lệnh
+    const onCancel=(idCommand)=>{
+        deleteDataFromServer(`//45.119.213.117:5000/api/v1/command/${idCommand}`)
         window.location.reload();
     }
+
+    //Sắp xếp lại properties trước khi render
     let orderObject = {
         stockCode: null,
         price: null,
@@ -66,7 +71,6 @@ let CommandDetail=(props)=>{
         idAccount: null
     }
     Object.assign(orderObject, filterData)
-    console.log(orderObject)
     const data = Object.keys(orderObject).map(key => orderObject[key]);
 
     return(
@@ -75,7 +79,7 @@ let CommandDetail=(props)=>{
                 return <td key={index}>{value}</td>
             })}
             <td>
-                <button onClick={()=>onDelete(idCommand)}>Cancel</button>   
+                <button onClick={()=>onCancel(idCommand)}>Cancel</button>   
             </td>
         </tr>
     )

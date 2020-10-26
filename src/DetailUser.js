@@ -4,11 +4,12 @@ import {useForm} from 'react-hook-form';
 
 const DetailUser=(props)=>{
     // console.log(props.history.location.state.userId);
-    const [companyName, setCompanyName]=useState([]);
+    const [stockCode, setStockCode]=useState([]);
     useEffect(()=>{
         const fetchData=async ()=>{
+            // Lấy tất cả stockCode để làm menu dropdown
             const result=await getStockCode()
-            setCompanyName(result)
+            setStockCode(result)
         }
         fetchData();
     }, []);
@@ -18,11 +19,9 @@ const DetailUser=(props)=>{
         data.commandType=parseInt(data.commandType)
         data.price=parseInt(data.price)
         data.volume=parseInt(data.volume)
-        console.log(data)
-        postDataToServer('http://45.119.213.117:5000/api/v1/command/insert', data)
+        postDataToServer('//45.119.213.117:5000/api/v1/command/insert', data)
         e.target.reset()
     }
-    console.log(companyName)
     return(
         <div>
             <form className='form' onSubmit={handleSubmit(onSubmit)}>
@@ -32,7 +31,7 @@ const DetailUser=(props)=>{
                             <th>Mã cổ phiếu</th>
                             <td>
                                 <select name='stockCode' ref={register({ required: true })}>
-                                    {companyName.map((value, index)=>{
+                                    {stockCode.map((value, index)=>{
                                         return(
                                             <option key={index} value={value}>{value}</option>
                                         )
@@ -60,10 +59,6 @@ const DetailUser=(props)=>{
                         <tr>
                             <th>Bán khống</th>
                             <td>
-                                {/* <select name='isShortSale' ref={register({ required: true })}>
-                                    <option value='true'>Yes</option>
-                                    <option value='false'>No</option>
-                                </select> */}
                                 <label className="container"> <input type="checkbox" name='isShortSale' ref={register({})}/> <span className="background"></span> <span className="mask"></span> </label>
                             </td>
                         </tr>

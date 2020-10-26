@@ -1,5 +1,5 @@
 import React from "react";
-import InputCompany from './InputCompany';
+// import InputCompany from './InputCompany';
 import ListCompany from './ListCompany';
 import Login from './Login';
 import ListUser from './ListUser';
@@ -19,17 +19,15 @@ class App extends React.Component{
             <div className='header'>
               <NavLink exact activeClassName='active' to='/'>Đăng nhập</NavLink>
               <NavLink activeClassName='active' to='listcompany'>Danh sách công ty</NavLink>
-              {/* <NavLink activeClassName='active' to='inputcompany'>Nhập công ty</NavLink> */}
               <NavLink activeClassName='active' to='listuser'>Danh sách user</NavLink>
               {/* <NavLink activeClassName='active' to='detailuser'>Detail User</NavLink> */}
               <NavLink activeClassName='active' to='rechargeforuser'>Nạp tiền cho user</NavLink>
               <NavLink activeClassName='active' to='activecommand'>Lệnh đang chờ</NavLink>
-              {/* <NavLink activeClassName='active' to='inactivecommand'>Inactive Command</NavLink> */}
               <NavLink activeClassName='active' to='confirmsession'>Chốt phiên</NavLink>
             </div>
             <div className='content'>
               <Switch>
-              {/* exact Nghĩa là chính xác là path rỗng (“/”) thì mới hiện trang Home. */}
+              {/* exact nghĩa là chính xác là path rỗng (“/”) thì mới hiện trang Home. */}
                 <PublicRoute exact path='/' component={Login}/>
                 <PrivateRoute path='/listcompany' component={ListCompany}/>
                 {/* <PrivateRoute path='/inputcompany' component={InputCompany}/> */}
@@ -37,7 +35,6 @@ class App extends React.Component{
                 <PrivateRoute path='/detailuser' component={DetailUser}/>
                 <PrivateRoute path='/rechargeforuser' component={RechargeForUser}/>
                 <PrivateRoute path='/activecommand' component={ActiveCommand}/>
-                {/* <PrivateRoute path='/inactivecommand' component={InactiveCommand}/> */}
                 <PrivateRoute path='/confirmsession' component={ConfirmSession}/>
               </Switch>
             </div>
